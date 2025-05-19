@@ -16,6 +16,9 @@ def get_number_input(prompt):
     while True:
         try:
             number = float(input(prompt))
+            # If number is whole make it int.
+            if number.is_integer():
+                return int(number)
             return number
         except ValueError:
             print("Invalid input. Please enter a valid number.")
@@ -62,18 +65,15 @@ def main():
         if operation == '+':
             result = add(num1, num2)
         elif operation == '-':
-            result = subtract(num1, num2) # This will now assign None to result
+            result = subtract(num1, num2)
         elif operation == '*':
-            result = multiply(num1, num2) # This will now assign None to result
+            result = multiply(num1, num2)
         elif operation == '/':
             result = divide(num1, num2)
         else:
             result = "Error: Invalid operation."
 
-        if result is None and (operation == '-' or operation == '*'):
-            print(f"\nResult: {num1} {operation} {num2} = Error: Function did not return a value (returned None)")
-        else:
-            print(f"\nResult: {num1} {operation} {num2} = {result}")
+        print(f"\nResult: {num1} {operation} {num2} = {result}")
 
 if __name__ == "__main__":
     main()
